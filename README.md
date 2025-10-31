@@ -1,18 +1,16 @@
-## Bayesian modelling of spatial tree mortality
+## GAMLSS modelling of tree taper
 
 #### Problem definition
 
-Mortality, specially in natural forests, seems to follow some type of spatial pattern, which, in turn, requires the usage of specialized models to account for spatial autocorrelation
-
-This notebook tries to use both pysal spreg module as well as a more flexible approach with pymc that adds a covariance component based off of the parcel index
+Tree taper models commonly used in the industry suffer from a variety of statistical issues: autocorrelation and multicollinearity. These problems are exacerbated in the cases of natural forests, where we have skewed and heteroskedastic data.
+This code snippet is part of my research, done between 2024 - 2025, to develop a model that can account for these problems.
 
 #### Methodology
 
--   Chi-square test to check data distribution
--   Explore gdf with leafmap
--   Apply Moran I to identify possibility of spatial clustering
--   Applying models and evaluating performance
+-   EDA
+-   Model fitting
+-   Evaluation on test dataset
 
-The final fitted pyMC model follows the following eq:
+As this is a snippet, the data was cut to about 10% of the original size, as I can't share the original dataset.
 
-$$f \sim GP(0,n^2k_{Matern-5/2}(X,X';l))$$ $$\mu = \beta_0 + X_i\beta_i+f$$ $$\sigma \sim HalfNormal(1)$$
+The resulting model used Box-Cox t distribution.W
